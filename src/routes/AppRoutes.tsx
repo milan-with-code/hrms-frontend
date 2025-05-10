@@ -9,6 +9,9 @@ import ForgetPassword from '../pages/auth/ForgetPassword';
 import VerifyResetCode from '../pages/auth/VerifyResetCode';
 import PasswordResetSuccess from '../pages/auth/PasswordResetSuccess';
 import ResetPassword from '../pages/auth/ResetPassword';
+import CompanyJoin from '../pages/company/CompanyJoin';
+import CreateCompany from '../pages/company/CreateCompany';
+import ChooseRole from '../pages/company/ChooseRole';
 
 const AppRoutes = () => {
   return (
@@ -17,6 +20,9 @@ const AppRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgetPassword />} />
       <Route path="/reset-password/verify" element={<VerifyResetCode />} />
+      <Route path="/choose-role" element={<ChooseRole />} />
+      <Route path="/company-join" element={<CompanyJoin />} />
+      <Route path="/create-company" element={<CreateCompany />} />
       <Route
         path="/reset-password/success"
         element={<PasswordResetSuccess />}

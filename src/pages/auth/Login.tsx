@@ -9,6 +9,9 @@ import type { LoginInputFieldProps } from '../../types/auth';
 import { useForm } from 'react-hook-form';
 import { loginSchema, type LoginFormSchema } from '../../validation/authSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useLogin } from '../../query-hooks/useUser';
+import { showError } from '../../lib/toastService';
+import { AxiosError } from 'axios';
 
 interface IFormInput {
   email: string;
@@ -47,18 +50,27 @@ const CheckboxField: React.FC<{
 );
 
 const Login: React.FC = () => {
+  const { mutateAsync: loginUser } = useLogin();
   const {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
   } = useForm<IFormInput>({
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginFormSchema) => {
-    console.log('Form submitted:', data);
-    reset();
+  const onSubmit = async (data: LoginFormSchema) => {
+    const { email, password } = data;
+    try {
+      const data = await loginUser({ email, password });
+      console.log('data :>> ', data);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        showError(
+          error.response?.data?.message ?? 'Login failed. Please try again.'
+        );
+      }
+    }
   };
 
   return (

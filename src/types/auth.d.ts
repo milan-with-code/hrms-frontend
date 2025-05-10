@@ -36,3 +36,15 @@ export interface InputFiledArrayProps {
   placeholder: string;
   type: string;
 }
+
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+export interface RegisterPayload {
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+}

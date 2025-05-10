@@ -1,20 +1,20 @@
-import { useQuery } from '@tanstack/react-query';
-import axiosInstance from '../api/axiosInstance';
+import { useMutation } from '@tanstack/react-query';
+import { chooseRole, login, register } from '../api/auth';
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-const fetchUser = async (): Promise<User> => {
-  const response = await axiosInstance.get('/user');
-  return response.data;
+export const useLogin = () => {
+  return useMutation({
+    mutationFn: login,
+  });
 };
 
-export const useUser = () => {
-  return useQuery<User>({
-    queryKey: ['user'],
-    queryFn: fetchUser,
+export const useRegister = () => {
+  return useMutation({
+    mutationFn: register,
+  });
+};
+
+export const useChooseRole = () => {
+  return useMutation({
+    mutationFn: chooseRole,
   });
 };

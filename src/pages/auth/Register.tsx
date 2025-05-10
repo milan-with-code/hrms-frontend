@@ -3,7 +3,7 @@ import IntroMessage from '../../components/common/IntroMessage';
 import { Label } from '../../components/ui/label';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import type { RegisterInputFieldProps } from '../../types/auth';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -11,6 +11,9 @@ import {
   registerSchema,
   type RegisterFormSchema,
 } from '../../validation/authSchema';
+import { useRegister } from '../../query-hooks/useUser';
+import { AxiosError } from 'axios';
+import { showError, showSuccess } from '../../lib/toastService';
 
 const InputField: React.FC<RegisterInputFieldProps> = ({
   label,
@@ -30,6 +33,8 @@ const InputField: React.FC<RegisterInputFieldProps> = ({
 );
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
+  const { mutateAsync: registration } = useRegister();
   const {
     register,
     handleSubmit,
@@ -37,8 +42,27 @@ const Register: React.FC = () => {
   } = useForm<RegisterFormSchema>({
     resolver: zodResolver(registerSchema),
   });
-  const onSubmit = (data: RegisterFormSchema) => {
-    console.log('data :>> ', data);
+  const onSubmit = async (data: RegisterFormSchema) => {
+    const { email, fullName, password, phone } = data;
+    try {
+      const data = await registration({
+        email,
+        name: fullName,
+        password,
+        phone,
+      });
+      if (data.status === 201) {
+        showSuccess(data.data.message);
+        await localStorage.setItem('token', data.data.token);
+        navigate('/choose-role');
+      }
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        showError(
+          error.response?.data?.message ?? 'Login failed. Please try again.'
+        );
+      }
+    }
   };
 
   return (
@@ -62,13 +86,6 @@ const Register: React.FC = () => {
             type="email"
             registration={register('email')}
             error={errors.email?.message}
-          />
-          <InputField
-            label="Company name"
-            placeholder="Enter your company name"
-            type="text"
-            registration={register('company')}
-            error={errors.company?.message}
           />
           <InputField
             label="Create password"
