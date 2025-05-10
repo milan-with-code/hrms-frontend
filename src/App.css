@@ -109,3 +109,144 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+@font-face {
+  font-family: 'Geist-Medium';
+  src: url('./assets/fonts/Geist-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Geist-Regular';
+  src: url('./assets/fonts/Geist-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Geist-SemiBold';
+  src: url('./assets//fonts/Geist-SemiBold.ttf');
+}
+
+.heading1Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.heading2Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 40px;
+}
+
+.heading3Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 32px;
+}
+
+.heading4Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 24px;
+}
+
+.heading5Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 20px;
+}
+
+.heading6Semibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 18px;
+}
+
+.heading1Medium {
+  font-family: 'Geist-Medium';
+  font-size: 48px;
+}
+
+.heading2Medium {
+  font-family: 'Geist-Medium';
+  font-size: 40px;
+}
+
+.heading3Medium {
+  font-family: 'Geist-Medium';
+  font-size: 32px;
+}
+
+.heading4Medium {
+  font-family: 'Geist-Medium';
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.heading5Medium {
+  font-family: 'Geist-Medium';
+  font-size: 20px;
+}
+
+.heading6Medium {
+  font-family: 'Geist-Medium';
+  font-size: 18px;
+}
+
+.bodyLargeSemibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 18px;
+}
+
+.bodyLargeMedium {
+  font-family: 'Geist-Medium';
+  font-size: 18px;
+}
+
+.bodyLargeRegular {
+  font-family: 'Geist-Regular';
+  font-size: 18px;
+}
+
+/* Regular */
+
+.bodyMediumSemibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 16px;
+}
+
+.bodyMediumMedium {
+  font-family: 'Geist-Medium';
+  font-size: 16px;
+}
+
+.bodyMediumRegular {
+  font-family: 'Geist-Regular';
+  font-size: 16px;
+}
+
+/* Small */
+
+.bodySmallSemibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 14px;
+}
+
+.bodySmallMedium {
+  font-family: 'Geist-Medium';
+  font-size: 14px;
+}
+
+.bodySmallRegular {
+  font-family: 'Geist-Regular';
+  font-size: 14px;
+}
+
+.XSmallSemibold {
+  font-family: 'Geist-SemiBold';
+  font-size: 12px;
+}
+
+.XSmallMedium {
+  font-family: 'Geist-Medium';
+  font-size: 12px;
+}
+
+.XSmallRegular {
+  font-family: 'Geist-Regular';
+  font-size: 12px;
+}

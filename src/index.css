@@ -1,8 +1,7 @@
 :root {
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #FFFFFF;
+  color: #1b1b1b;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
