@@ -48,3 +48,8 @@ export interface RegisterPayload {
   password: string;
   phone: string;
 }
+
+export interface JoinCompanyPayload {
+  companyName: string;
+  companyCode: string;
+}

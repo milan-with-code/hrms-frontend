@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { loginSchema, type LoginFormSchema } from '../../validation/authSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useLogin } from '../../query-hooks/useUser';
-import { showError } from '../../lib/toastService';
+import { showError, showSuccess } from '../../lib/toastService';
 import { AxiosError } from 'axios';
 
 interface IFormInput {
@@ -63,7 +63,10 @@ const Login: React.FC = () => {
     const { email, password } = data;
     try {
       const data = await loginUser({ email, password });
-      console.log('data :>> ', data);
+      if (data.status === 200) {
+        showSuccess(data.data.message ?? 'Login successful');
+        await localStorage.setItem('token', data.data.token);
+      }
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         showError(

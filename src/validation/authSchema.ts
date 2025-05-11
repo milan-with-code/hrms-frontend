@@ -63,3 +63,14 @@ export const resetPasswordSchema = z
   });
 
 export type ResetPasswordFormSchema = z.infer<typeof resetPasswordSchema>;
+
+export const joinCompanySchema = z.object({
+  companyName: z.string().min(1, 'Company name is required'),
+
+  companyCode: z
+    .string()
+    .min(1, 'Company code is required')
+    .regex(/^[a-zA-Z0-9-]+$/, 'Company code must be alphanumeric'),
+});
+
+export type JoinCompanyFormSchema = z.infer<typeof joinCompanySchema>;
